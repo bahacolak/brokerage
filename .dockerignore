@@ -1,0 +1,11 @@
+target/
+!target/brokerage-api-1.0.0.jar
+.git/
+.gitignore
+*.md
+.idea/
+*.iml
+.vscode/
+.DS_Store
+node_modules/
+logs/
