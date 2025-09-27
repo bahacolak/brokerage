@@ -2,12 +2,20 @@ FROM eclipse-temurin:17-jdk AS build
 
 WORKDIR /app
 
+# Copy Maven Wrapper files first
+COPY mvnw .
+COPY mvnw.cmd .
+COPY .mvn .mvn
 COPY pom.xml .
+
+# Make mvnw executable
+RUN chmod +x mvnw
+
+# Copy source code
 COPY src src/
 
-RUN apt-get update && apt-get install -y maven
-
-RUN mvn clean package -DskipTests
+# Build with Maven Wrapper (no need to install Maven)
+RUN ./mvnw clean package -DskipTests
 
 FROM eclipse-temurin:17-jre
 

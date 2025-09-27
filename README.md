@@ -29,20 +29,32 @@ docker-compose up --build
 docker-compose up
 ```
 
-### 2. Run with Maven
+### 2. Run with Maven Wrapper
 
 ```bash
-# Build
-mvn clean install
+# Build (Unix/Linux/Mac)
+./mvnw clean install
 
 # Run
+./mvnw spring-boot:run
+
+# Windows
+mvnw.cmd clean install
+mvnw.cmd spring-boot:run
+```
+
+### 3. Run with System Maven
+
+```bash
+# If you have Maven installed
+mvn clean install
 mvn spring-boot:run
 ```
 
-### 3. Run with JAR
+### 4. Run with JAR
 
 ```bash
-mvn clean package
+./mvnw clean package
 java -jar target/brokerage-api-1.0.0.jar
 ```
 
@@ -138,8 +150,17 @@ docker-compose down
 ## Development
 
 ```bash
-# Run tests
-mvn test
+# Run tests (Maven Wrapper - recommended)
+./mvnw test
 
 # Build with tests
+./mvnw clean install
+
+# Windows
+mvnw.cmd test
+mvnw.cmd clean install
+
+# System Maven (if available)
+mvn test
 mvn clean install
+```
